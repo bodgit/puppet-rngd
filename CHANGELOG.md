@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.0.3](https://github.com/bodgit/puppet-rngd/tree/v2.0.3) (2019-08-10)
+[Full Changelog](https://github.com/bodgit/puppet-rngd/compare/v2.0.2...v2.0.3)
+
+**Implemented enhancements:**
+
+- Update metadata.json [\#10](https://github.com/bodgit/puppet-rngd/pull/10) ([langoureaux-s](https://github.com/langoureaux-s))
+
 ## [v2.0.2](https://github.com/bodgit/puppet-rngd/tree/v2.0.2) (2018-04-18)
 [Full Changelog](https://github.com/bodgit/puppet-rngd/compare/v2.0.1...v2.0.2)
 
