@@ -3,7 +3,7 @@ class rngd::config {
 
   $hwrng_device = $::rngd::hwrng_device
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat': {
       $options = delete_undef_values([
         $hwrng_device ? {
@@ -20,14 +20,14 @@ class rngd::config {
         content => template("${module_name}/sysconfig.erb"),
       }
 
-      if $::operatingsystemmajrelease == '7' {
+      if $facts['os']['release']['major'] == '7' {
 
-        $directory_seltype = $::selinux ? {
+        $directory_seltype = $facts['os']['selinux']['enabled'] ? {
           true    => 'systemd_unit_file_t',
           default => undef,
         }
 
-        $file_seltype = $::selinux ? {
+        $file_seltype = $facts['os']['selinux']['enabled'] ? {
           true    => 'rngd_unit_file_t',
           default => undef,
         }

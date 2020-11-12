@@ -1,9 +1,9 @@
 # @!visibility private
 class rngd::params {
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat': {
-      case $::operatingsystemmajrelease {
+      case $facts['os']['release']['major'] {
         '5': {
           # The package is different and lacks an init script on 5.x
           $package_name   = 'rng-utils'
@@ -21,9 +21,9 @@ class rngd::params {
       $package_name   = 'rng-tools'
       $service_manage = true
       $service_name   = 'rng-tools'
-      case $::operatingsystem {
+      case $facts['os']['name'] {
         'Ubuntu': {
-          case $::operatingsystemrelease {
+          case $facts['os']['release']['full'] {
             '12.04', '14.04': {
               $hasstatus = false
             }
@@ -33,7 +33,7 @@ class rngd::params {
           }
         }
         default: {
-          case $::operatingsystemmajrelease {
+          case $facts['os']['release']['major'] {
             '6', '7': {
               $hasstatus = false
             }
@@ -45,7 +45,7 @@ class rngd::params {
       }
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
+      fail("The ${module_name} module is not supported on an ${facts['os']['family']} based system.")
     }
   }
 }
