@@ -7,6 +7,12 @@
   "source": "https://github.com/bodgit/puppet-rngd",
   "project_page": "https://github.com/bodgit/puppet-rngd",
   "issues_url": "https://github.com/bodgit/puppet-rngd/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">=4.13.0 <7.0.0"
+    }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -68,10 +74,7 @@
     "rngd",
     "entropy"
   ],
-  "dependencies": [
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">=4.13.0 <7.0.0"
-    }
-  ]
+  "pdk-version": "1.18.1",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#1.18.1",
+  "template-ref": "tags/1.18.1-0-g3d2e75c"
 }
