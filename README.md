@@ -25,8 +25,6 @@ The module basically makes sure the rngd daemon is installed and started,
 that's pretty much it. The rngd daemon does a good job at working out where
 the source of hardware entropy is so there's little configuration required.
 
-RHEL/CentOS, Ubuntu and Debian are supported using Puppet 4.4.0 or later.
-
 ## Setup
 
 ### Beginning with rngd
@@ -64,13 +62,13 @@ version of the documentation is hosted at
 
 ## Limitations
 
-This module has been built on and tested against Puppet 4.4.0 and higher.
+This module has been built on and tested against Puppet 5 and higher.
 
 The module has been tested on:
 
-* RedHat Enterprise Linux 5/6/7
-* Ubuntu 12.04/14.04/16.04
-* Debian 6/7/8/9
+* RedHat Enterprise Linux 6/7
+* Ubuntu 14.04/16.04
+* Debian 8/9
 
 ## Development
 

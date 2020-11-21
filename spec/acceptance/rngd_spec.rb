@@ -27,7 +27,7 @@ describe 'rngd' do
     its(:content) { is_expected.to match %r{^HRNGDEVICE="\/dev\/urandom"$} }
   end
 
-  describe file('/etc/sysconfig/rngd'), if: (fact('osfamily').eql?('RedHat') && !fact('operatingsystemmajrelease').eql?('5')) do
+  describe file('/etc/sysconfig/rngd'), if: fact('osfamily').eql?('RedHat') do
     it { is_expected.to be_file }
     it { is_expected.to be_mode 644 }
     it { is_expected.to be_owned_by 'root' }
@@ -35,7 +35,7 @@ describe 'rngd' do
     its(:content) { is_expected.to match %r{^EXTRAOPTIONS="-r \/dev\/urandom"$} }
   end
 
-  describe file('/etc/systemd/system/rngd.service.d/override.conf'), if: (fact('osfamily').eql?('RedHat') && fact('operatingsystemmajrelease').eql?('7')) do
+  describe file('/etc/systemd/system/rngd.service.d/override.conf'), if: (fact('osfamily').eql?('RedHat') && !fact('operatingsystemmajrelease').eql?('6')) do
     it { is_expected.to be_file }
     it { is_expected.to be_mode 644 }
     it { is_expected.to be_owned_by 'root' }
@@ -43,27 +43,27 @@ describe 'rngd' do
     its(:sha256sum) { is_expected.to eq 'cb063edc0c2891008c930c1da1f7187b3eeb5521602939678bb0f2f4e2977259' }
   end
 
-  describe service(service), if: (fact('osfamily').eql?('RedHat') && !fact('operatingsystemmajrelease').eql?('5')) do
+  describe service(service), if: fact('osfamily').eql?('RedHat') do
     it { is_expected.to be_enabled }
     it { is_expected.to be_running }
   end
 
-  describe service(service), if: (fact('operatingsystem').eql?('Debian') && !['6', '7'].include?(fact('operatingsystemmajrelease'))) do
+  describe service(service), if: fact('operatingsystem').eql?('Debian') do
     it { is_expected.to be_enabled }
     it { is_expected.to be_running }
   end
 
-  describe service(service), if: (fact('operatingsystem').eql?('Ubuntu') && !['12.04', '14.04'].include?(fact('operatingsystemrelease'))) do
+  describe service(service), if: (fact('operatingsystem').eql?('Ubuntu') && !['14.04'].include?(fact('operatingsystemrelease'))) do
     it { is_expected.to be_enabled }
     it { is_expected.to be_running }
   end
 
-  # Debian < 8 and Ubuntu < 16.04 doesn't support 'service rngd status'
-  describe service(service), if: (fact('osfamily').eql?('Debian') && (['6', '7'].include?(fact('operatingsystemmajrelease')) || ['12.04', '14.04'].include?(fact('operatingsystemrelease')))) do
+  # Ubuntu < 16.04 doesn't support 'service rngd status'
+  describe service(service), if: (fact('operatingsystem').eql?('Ubuntu') && ['14.04'].include?(fact('operatingsystemrelease'))) do
     it { is_expected.to be_enabled }
   end
 
-  describe process('rngd'), unless: (fact('osfamily').eql?('RedHat') && fact('operatingsystemmajrelease').eql?('5')) do
+  describe process('rngd') do
     it { is_expected.to be_running }
     its(:args) { is_expected.to match %r{-r \/dev\/urandom} }
   end
