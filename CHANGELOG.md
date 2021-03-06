@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v3.0.1](https://github.com/bodgit/puppet-rngd/tree/v3.0.1) (2021-03-06)
+
+[Full Changelog](https://github.com/bodgit/puppet-rngd/compare/v3.0.0...v3.0.1)
+
+### Added
+
+- Support Puppet 7.x [\#15](https://github.com/bodgit/puppet-rngd/pull/15) ([bodgit](https://github.com/bodgit))
+- Update to PDK 2.0.0 [\#14](https://github.com/bodgit/puppet-rngd/pull/14) ([bodgit](https://github.com/bodgit))
+
 ## [v3.0.0](https://github.com/bodgit/puppet-rngd/tree/v3.0.0) (2020-11-21)
 
 [Full Changelog](https://github.com/bodgit/puppet-rngd/compare/v2.0.3...v3.0.0)
