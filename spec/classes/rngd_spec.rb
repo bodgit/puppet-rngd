@@ -10,7 +10,7 @@ describe 'rngd' do
       }
     end
 
-    it { expect { is_expected.to compile }.to raise_error(%r{not supported on an Unsupported}) }
+    it { is_expected.to compile.and_raise_error(%r{not supported on an Unsupported}) }
   end
 
   on_supported_os.each do |os, facts|
